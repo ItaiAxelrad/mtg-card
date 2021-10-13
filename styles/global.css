@@ -1,0 +1,24 @@
+/* Global css goes here */
+#__next {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  #__next {
+    background-image: url('/bg-dark.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  #__next {
+    background-image: url('/bg.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
