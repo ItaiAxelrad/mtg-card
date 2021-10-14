@@ -1,4 +1,9 @@
-import LogoIcon from '@components/Logo';
+import LogoIcon from '@components/icons/Logo';
+import FireIcon from '@components/icons/Fire';
+import SkullIcon from '@components/icons/Skull';
+import SunIcon from '@components/icons/Sun';
+import TreeIcon from '@components/icons/Tree';
+import WaterIcon from '@components/icons/Water';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -10,11 +15,24 @@ import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import BrushIcon from '@mui/icons-material/Brush';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { orange } from '@mui/material/colors';
+import { red, blue, green, yellow } from '@mui/material/colors';
 import VanillaTilt from 'vanilla-tilt';
 
 export default function MagicCard({ values }) {
-  const { name, type, rarity, rules, flavor, power, toughness } = values;
+  const {
+    name,
+    mana,
+    image,
+    supertype,
+    type,
+    subtype,
+    rarity,
+    rules,
+    flavor,
+    power,
+    toughness,
+    artist,
+  } = values;
   return (
     <Card
       data-tilt
@@ -55,8 +73,8 @@ export default function MagicCard({ values }) {
       <CardMedia
         component="img"
         height="275"
-        image="Akroma.jpg"
-        alt="magic"
+        alt={name}
+        image={image}
         sx={{
           borderRadius: 1,
           mb: 0.5,
@@ -65,10 +83,20 @@ export default function MagicCard({ values }) {
       />
       <CardHeader
         sx={{ bgcolor: 'background.paper', borderRadius: 1, py: 0, mb: 0.5 }}
-        title={<Typography fontWeight={800}>{type}</Typography>}
+        title={
+          <Typography fontWeight={800}>
+            {supertype} {type} - {subtype}
+          </Typography>
+        }
         action={
           <IconButton aria-label="set" disabled>
-            <LogoIcon color="default" sx={{ color: orange[500] }} />
+            {rarity == 'common' && <LogoIcon color="default" />}
+            {rarity == 'uncommon' && (
+              <LogoIcon color="default" sx={{ color: 'silver' }} />
+            )}
+            {rarity == 'rare' && (
+              <LogoIcon color="default" sx={{ color: 'gold' }} />
+            )}
           </IconButton>
         }
       />
@@ -103,7 +131,7 @@ export default function MagicCard({ values }) {
         <Stack direction="row" spacing={1}>
           <BrushIcon fontSize="small" color="text.secondary" />
           <Typography variant="body2" color="text.secondary" noWrap>
-            Itai Axelrad
+            {artist}
           </Typography>
         </Stack>
         <Chip

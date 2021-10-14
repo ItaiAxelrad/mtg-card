@@ -7,7 +7,7 @@
       "@hooks/*": ["hooks/*"],
       "@models/*": ["models/*"],
       "@lib/*": ["lib/*"],
-      "@middleware/*": ["middleware/*"],
+      "@data/*": ["data/*"],
       "@styles/*": ["styles/*"]
     }
   }

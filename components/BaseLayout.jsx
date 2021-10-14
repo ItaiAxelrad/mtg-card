@@ -22,7 +22,7 @@ const BaseLayout = ({ children }) => {
       <Container
         maxWidth="lg"
         component="main"
-        sx={{ display: 'grid', alignItems: 'center' }}
+        sx={{ display: 'grid', alignItems: 'center', p: 0 }}
       >
         {children}
       </Container>
