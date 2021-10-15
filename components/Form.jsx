@@ -1,7 +1,4 @@
-import { useState } from 'react';
-import types from '@data/types.json';
-import subtypes from '@data/subtypes.json';
-import supertypes from '@data/supertypes.json';
+import useSWR from 'swr';
 import FireIcon from '@components/icons/Fire';
 import SkullIcon from '@components/icons/Skull';
 import SunIcon from '@components/icons/Sun';
@@ -14,17 +11,17 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Select from '@mui/material/Select';
-import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 
 const MagicForm = ({ values, handleChange, mana, handleMana }) => {
-  const [inputValue, setInputValue] = useState('');
+  const { data: types } = useSWR('/api/types');
+  const { data: subtypes } = useSWR('/api/subtypes');
+  const { data: supertypes } = useSWR('/api/supertypes');
   return (
     <Box component="form" noValidate autoComplete="off">
-      <Divider sx={{ mb: 2 }}>Card Generator</Divider>
       <FormControl fullWidth sx={{ mb: 2 }}>
         <InputLabel id="select-label">Card Color</InputLabel>
         <Select
@@ -56,6 +53,7 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
 
       <Stack spacing={1} direction="row" sx={{ my: 2 }}>
         <TextField
+          fullWidth
           min="0"
           size="small"
           id="red"
@@ -79,6 +77,7 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           onChange={handleMana}
         />
         <TextField
+          fullWidth
           size="small"
           id="blue"
           name="blue"
@@ -101,6 +100,7 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           onChange={handleMana}
         />
         <TextField
+          fullWidth
           size="small"
           id="green"
           name="green"
@@ -125,6 +125,7 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
       </Stack>
       <Stack spacing={1} direction="row" sx={{ my: 2 }}>
         <TextField
+          fullWidth
           size="small"
           id="black"
           name="black"
@@ -147,6 +148,7 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           onChange={handleMana}
         />
         <TextField
+          fullWidth
           size="small"
           id="white"
           name="white"
@@ -169,6 +171,7 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           onChange={handleMana}
         />
         <TextField
+          fullWidth
           size="small"
           id="colorless"
           name="colorless"
@@ -216,10 +219,6 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           )}
           value={values.supertype}
           onChange={handleChange}
-          inputValue={inputValue}
-          onInputChange={(event, newInputValue) => {
-            setInputValue(newInputValue);
-          }}
         />
         <Autocomplete
           fullWidth

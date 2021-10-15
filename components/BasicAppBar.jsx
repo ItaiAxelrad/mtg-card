@@ -17,7 +17,7 @@ export default function BasicAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             MUI❤️MTG
           </Typography>
-          <Button variant="outlined" color="inherit">
+          <Button variant="outlined" color="inherit" disabled>
             Save
           </Button>
         </Toolbar>

@@ -5,8 +5,8 @@ const handler = async (req, res) => {
   // http methods
   switch (method) {
     case 'GET':
-      const types = await fetcher(`${process.env.MTG_API}/types`);
-      res.status(200).send(types);
+      const data = await fetcher(`${process.env.MTG_API}/types`);
+      res.status(200).send(data.types);
       break;
     default:
       res.setHeader('Allow', ['GET']);
