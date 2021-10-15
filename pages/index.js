@@ -9,8 +9,8 @@ import MagicForm from '@components/Form';
 export default function Magic() {
   const matches = useMediaQuery(theme.breakpoints.up('md'));
   const [values, handleChange] = useInput({
+    color: 'white',
     name: 'Akroma, Angel of Wrath',
-    mana: { c: 5, w: 3 },
     image: 'Akroma.jpg',
     supertype: 'Legendary',
     type: 'Creature',
@@ -24,18 +24,37 @@ export default function Magic() {
     artist: 'Ron Spears',
   });
 
+  const [mana, handleMana] = useInput({
+    colorless: 5,
+    white: 3,
+    red: 0,
+    black: 0,
+    green: 0,
+    blue: 0,
+  });
+
   return (
     <Grid container spacing={2}>
       {matches ? (
         <>
           <Grid item xs={6}>
-            <Container maxWidth="xs">
-              <MagicForm values={values} handleChange={handleChange} />
+            <Container maxWidth="sm">
+              <MagicForm
+                values={values}
+                handleChange={handleChange}
+                mana={mana}
+                handleMana={handleMana}
+              />
             </Container>
           </Grid>
           <Grid item xs={6}>
             <Container maxWidth="xs">
-              <MagicCard values={values} handleChange={handleChange} />
+              <MagicCard
+                values={values}
+                handleChange={handleChange}
+                mana={mana}
+                handleMana={handleMana}
+              />
             </Container>
           </Grid>
         </>
@@ -43,11 +62,21 @@ export default function Magic() {
         <>
           <Grid item xs={12} sx={{ my: 5 }}>
             <Container maxWidth="xs">
-              <MagicForm values={values} handleChange={handleChange} />
+              <MagicForm
+                values={values}
+                handleChange={handleChange}
+                mana={mana}
+                handleMana={handleMana}
+              />
             </Container>
           </Grid>
           <Grid item xs={12} sx={{ mx: 0.5 }}>
-            <MagicCard values={values} handleChange={handleChange} />
+            <MagicCard
+              values={values}
+              handleChange={handleChange}
+              mana={mana}
+              handleMana={handleMana}
+            />
           </Grid>
         </>
       )}

@@ -1,4 +1,6 @@
 import { createTheme } from '@mui/material/styles';
+import { red, blue, green, yellow, amber, grey } from '@mui/material/colors';
+
 
 // a dedicated function that will return the palette based on the mode
 export const getDesignTokens = (mode) => ({
@@ -19,7 +21,9 @@ const globalTheme = createTheme({
   typography: {
     fontFamily: ['Cardo', 'serif'].join(','),
   },
-  palette: {},
+  palette: {
+    primary: { main: red[600] },
+  },
 });
 
 export default globalTheme;

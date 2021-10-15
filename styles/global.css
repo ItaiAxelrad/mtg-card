@@ -4,22 +4,20 @@
   height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  background-image: url('/bg-light.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 @media (prefers-color-scheme: dark) {
   #__next {
     background-image: url('/bg-dark.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 }
 
 @media (prefers-color-scheme: light) {
   #__next {
     background-image: url('/bg-light.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 }

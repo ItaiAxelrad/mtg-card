@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import types from '@data/types.json';
 import subtypes from '@data/subtypes.json';
 import supertypes from '@data/supertypes.json';
@@ -19,10 +20,30 @@ import InputAdornment from '@mui/material/InputAdornment';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 
-const MagicForm = ({ values, handleChange }) => {
+const MagicForm = ({ values, handleChange, mana, handleMana }) => {
+  const [inputValue, setInputValue] = useState('');
   return (
     <Box component="form" noValidate autoComplete="off">
       <Divider sx={{ mb: 2 }}>Card Generator</Divider>
+      <FormControl fullWidth sx={{ mb: 2 }}>
+        <InputLabel id="select-label">Card Color</InputLabel>
+        <Select
+          size="small"
+          labelId="select-label"
+          id="select"
+          name="color"
+          label="Card Color"
+          value={values.color}
+          onChange={handleChange}
+        >
+          <MenuItem value="grey">Colorless</MenuItem>
+          <MenuItem value="white">White</MenuItem>
+          <MenuItem value="blue">Blue</MenuItem>
+          <MenuItem value="green">Green</MenuItem>
+          <MenuItem value="red">Red</MenuItem>
+          <MenuItem value="black">Black</MenuItem>
+        </Select>
+      </FormControl>
       <TextField
         size="small"
         id="name"
@@ -35,11 +56,18 @@ const MagicForm = ({ values, handleChange }) => {
 
       <Stack spacing={1} direction="row" sx={{ my: 2 }}>
         <TextField
+          min="0"
           size="small"
           id="red"
           label="Red"
+          name="red"
           type="number"
-          inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+          inputProps={{
+            inputMode: 'numeric',
+            pattern: '[0-9]*',
+            min: 0,
+            max: 10,
+          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -47,13 +75,21 @@ const MagicForm = ({ values, handleChange }) => {
               </InputAdornment>
             ),
           }}
+          value={mana.red}
+          onChange={handleMana}
         />
         <TextField
           size="small"
           id="blue"
+          name="blue"
           label="Blue"
           type="number"
-          inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+          inputProps={{
+            inputMode: 'numeric',
+            pattern: '[0-9]*',
+            min: 0,
+            max: 10,
+          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -61,13 +97,21 @@ const MagicForm = ({ values, handleChange }) => {
               </InputAdornment>
             ),
           }}
+          value={mana.blue}
+          onChange={handleMana}
         />
         <TextField
           size="small"
           id="green"
+          name="green"
           label="Green"
           type="number"
-          inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+          inputProps={{
+            inputMode: 'numeric',
+            pattern: '[0-9]*',
+            min: 0,
+            max: 10,
+          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -75,15 +119,23 @@ const MagicForm = ({ values, handleChange }) => {
               </InputAdornment>
             ),
           }}
+          value={mana.green}
+          onChange={handleMana}
         />
       </Stack>
       <Stack spacing={1} direction="row" sx={{ my: 2 }}>
         <TextField
           size="small"
           id="black"
+          name="black"
           label="Black"
           type="number"
-          inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+          inputProps={{
+            inputMode: 'numeric',
+            pattern: '[0-9]*',
+            min: 0,
+            max: 10,
+          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -91,13 +143,21 @@ const MagicForm = ({ values, handleChange }) => {
               </InputAdornment>
             ),
           }}
+          value={mana.black}
+          onChange={handleMana}
         />
         <TextField
           size="small"
           id="white"
+          name="white"
           label="White"
           type="number"
-          inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+          inputProps={{
+            inputMode: 'numeric',
+            pattern: '[0-9]*',
+            min: 0,
+            max: 10,
+          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -105,13 +165,21 @@ const MagicForm = ({ values, handleChange }) => {
               </InputAdornment>
             ),
           }}
+          value={mana.white}
+          onChange={handleMana}
         />
         <TextField
           size="small"
           id="colorless"
+          name="colorless"
           label="Colorless"
           type="number"
-          inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+          inputProps={{
+            inputMode: 'numeric',
+            pattern: '[0-9]*',
+            min: 0,
+            max: 10,
+          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -119,6 +187,8 @@ const MagicForm = ({ values, handleChange }) => {
               </InputAdornment>
             ),
           }}
+          value={mana.colorless}
+          onChange={handleMana}
         />
       </Stack>
 
@@ -135,42 +205,45 @@ const MagicForm = ({ values, handleChange }) => {
       <Divider sx={{ my: 2 }} />
       <Stack spacing={2} direction="row" sx={{ my: 2 }}>
         <Autocomplete
+          autoSelect
           fullWidth
           freeSolo
-          disableClearable
           size="small"
           id="supertype"
-          name="supertype"
           options={supertypes}
-          renderInput={(params) => <TextField {...params} label="Supertype" />}
-          inputValue={values.supertype}
-          onInputChange={handleChange}
+          renderInput={(params) => (
+            <TextField {...params} label="Supertype" name="supertype" />
+          )}
           value={values.supertype}
           onChange={handleChange}
+          inputValue={inputValue}
+          onInputChange={(event, newInputValue) => {
+            setInputValue(newInputValue);
+          }}
         />
         <Autocomplete
           fullWidth
+          autoSelect
           freeSolo
-          disableClearable
           size="small"
           id="type"
-          name="type"
           options={types}
-          renderInput={(params) => <TextField {...params} label="Type" />}
-          inputValue={values.type}
+          renderInput={(params) => (
+            <TextField {...params} label="Type" name="type" />
+          )}
           value={values.type}
           onChange={handleChange}
         />
         <Autocomplete
           fullWidth
+          autoSelect
           freeSolo
-          disableClearable
           size="small"
           id="subtype"
-          name="subtype"
           options={subtypes}
-          renderInput={(params) => <TextField {...params} label="Subtype" />}
-          inputValue={values.subtype}
+          renderInput={(params) => (
+            <TextField {...params} label="Subtype" name="subtype" />
+          )}
           value={values.subtype}
           onChange={handleChange}
         />

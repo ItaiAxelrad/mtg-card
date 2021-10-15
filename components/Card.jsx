@@ -14,14 +14,14 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import BrushIcon from '@mui/icons-material/Brush';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { red, blue, green, yellow } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 import VanillaTilt from 'vanilla-tilt';
+import getCardColors from '@lib/cardColors';
 
-export default function MagicCard({ values }) {
+export default function MagicCard({ values, mana }) {
   const {
+    color,
     name,
-    mana,
     image,
     supertype,
     type,
@@ -33,17 +33,21 @@ export default function MagicCard({ values }) {
     toughness,
     artist,
   } = values;
+  const { colorless, white, red, black, green, blue } = mana;
+  const cardColors = getCardColors(color);
+
   return (
     <Card
       data-tilt
       data-tilt-max="2"
       data-tilt-speed="500"
       sx={{
-        bgcolor: 'divider',
+        color: grey[900],
+        bgcolor: cardColors.bg2,
         maxWidth: 400,
         p: 1.5,
         border: '1rem solid',
-        borderColor: 'black',
+        borderColor: grey[900],
         transform: 'perspective(500px)',
         transformStyle: 'preserve-3d',
         cursor: 'pointer',
@@ -52,21 +56,50 @@ export default function MagicCard({ values }) {
     >
       <CardHeader
         sx={{
-          bgcolor: 'background.paper',
+          bgcolor: cardColors.bg,
           borderRadius: 1,
+          border: '2px solid',
+          borderColor: cardColors.border,
+          borderStyle: 'outset',
           py: 0,
-          mb: 0.5,
+          px: 1,
           transform: 'translateZ(100px)',
         }}
         title={<Typography fontWeight={800}>{name}</Typography>}
         action={
           <IconButton aria-label="mana" disabled>
-            <Typography variant="body1" sx={{ color: 'text.primary', mr: 0.5 }}>
-              5
+            <Typography
+              variant="body1"
+              textAlign="center"
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                bgcolor: grey[300],
+                borderRadius: 100,
+                color: grey[900],
+                mr: 0.5,
+                width: '20px',
+                height: '20px',
+              }}
+            >
+              {colorless}
             </Typography>
-            <Brightness7Icon color="warning" fontSize="small" />
-            <Brightness7Icon color="warning" fontSize="small" />
-            <Brightness7Icon color="warning" fontSize="small" />
+            {[...Array(parseInt(white)).keys()].map((e) => (
+              <SunIcon fontSize="small" key={e} />
+            ))}
+            {[...Array(parseInt(red)).keys()].map((e) => (
+              <FireIcon fontSize="small" key={e} />
+            ))}
+            {[...Array(parseInt(black)).keys()].map((e) => (
+              <SkullIcon fontSize="small" key={e} />
+            ))}
+            {[...Array(parseInt(green)).keys()].map((e) => (
+              <TreeIcon fontSize="small" key={e} />
+            ))}
+            {[...Array(parseInt(blue)).keys()].map((e) => (
+              <WaterIcon fontSize="small" key={e} />
+            ))}
           </IconButton>
         }
       />
@@ -76,13 +109,21 @@ export default function MagicCard({ values }) {
         alt={name}
         image={image}
         sx={{
-          borderRadius: 1,
-          mb: 0.5,
+          borderRadius: 0,
+          px: 0.5,
           transform: 'translateZ(20px)',
         }}
       />
       <CardHeader
-        sx={{ bgcolor: 'background.paper', borderRadius: 1, py: 0, mb: 0.5 }}
+        sx={{
+          bgcolor: cardColors.bg,
+          borderRadius: 1,
+          border: '2px solid',
+          borderColor: cardColors.border,
+          borderStyle: 'outset',
+          py: 0,
+          px: 1,
+        }}
         title={
           <Typography fontWeight={800}>
             {supertype} {type} - {subtype}
@@ -90,7 +131,7 @@ export default function MagicCard({ values }) {
         }
         action={
           <IconButton aria-label="set" disabled>
-            {rarity == 'common' && <LogoIcon color="default" />}
+            {rarity == 'common' && <LogoIcon sx={{ color: grey[900] }} />}
             {rarity == 'uncommon' && (
               <LogoIcon color="default" sx={{ color: 'silver' }} />
             )}
@@ -102,9 +143,10 @@ export default function MagicCard({ values }) {
       />
       <CardContent
         sx={{
-          bgcolor: 'background.default',
-          borderRadius: 1,
+          bgcolor: cardColors.bg,
           height: 175,
+          px: 1,
+          mx: 0.5,
         }}
       >
         <Typography variant="body1" paragraph>
@@ -112,9 +154,8 @@ export default function MagicCard({ values }) {
         </Typography>
         <Typography
           variant="body2"
-          color="text.secondary"
           paragraph
-          sx={{ fontStyle: 'oblique' }}
+          sx={{ fontStyle: 'oblique', color: grey[700] }}
         >
           &quot;{flavor}&quot;
         </Typography>
@@ -123,20 +164,28 @@ export default function MagicCard({ values }) {
         disableSpacing
         sx={{
           justifyContent: 'space-between',
-          pt: 0.5,
+          pt: 0,
           pb: 0,
           px: 0,
         }}
       >
         <Stack direction="row" spacing={1}>
           <BrushIcon fontSize="small" color="text.secondary" />
-          <Typography variant="body2" color="text.secondary" noWrap>
+          <Typography variant="body2" noWrap sx={{ color: grey[700] }}>
             {artist}
           </Typography>
         </Stack>
         <Chip
           label={`${power}/${toughness}`}
-          sx={{ fontSize: '1rem', bgcolor: 'background.paper' }}
+          sx={{
+            color: grey[900],
+            fontSize: '1rem',
+            bgcolor: cardColors.bg,
+            borderRadius: 1,
+            border: '2px solid',
+            borderColor: cardColors.border,
+            borderStyle: 'outset',
+          }}
           color="default"
         />
       </CardActions>
