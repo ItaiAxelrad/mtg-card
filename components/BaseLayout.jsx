@@ -11,31 +11,32 @@ const BaseLayout = ({ children }) => {
     <>
       <Head>
         <title>MUI❤️MTG</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
         <meta
-          key="viewport"
-          name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          key='viewport'
+          name='viewport'
+          content='width=device-width, initial-scale=1, shrink-to-fit=no'
         />
       </Head>
       <BasicAppBar />
       <Container
-        maxWidth="lg"
-        component="main"
+        maxWidth='lg'
+        component='main'
         sx={{ display: 'grid', alignItems: 'center', p: 0 }}
       >
         {children}
       </Container>
-      <Container maxWidth="lg" component="footer" sx={{ p: 2 }}>
+      <Container maxWidth='lg' component='footer' sx={{ p: 2 }}>
         <Stack
-          direction="row"
-          divider={<Divider orientation="vertical" flexItem />}
+          direction='row'
+          divider={<Divider orientation='vertical' flexItem />}
           spacing={2}
-          justifyContent="center"
+          justifyContent='center'
         >
           <Typography>&copy; Itai Axelrad</Typography>
-          <Link href="https://mui.com/">MUI</Link>
-          <Link href="https://github.com/">Source</Link>
+          <Link href='https://mui.com/'>MUI</Link>
+          <Link href='https://magic.wizards.com/'>MTG</Link>
+          <Link href='https://github.com/ItaiAxelrad/mui-mtg'>Source</Link>
         </Stack>
       </Container>
     </>

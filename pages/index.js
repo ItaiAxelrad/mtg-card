@@ -25,12 +25,12 @@ export default function Magic() {
   });
 
   const [mana, handleMana] = useInput({
-    colorless: 5,
-    white: 3,
-    red: 0,
-    black: 0,
-    green: 0,
-    blue: 0,
+    c: 5,
+    w: 3,
+    r: 0,
+    b: 0,
+    g: 0,
+    u: 0,
   });
 
   return (
@@ -38,7 +38,7 @@ export default function Magic() {
       {matches ? (
         <>
           <Grid item xs={6}>
-            <Container maxWidth="sm">
+            <Container maxWidth='sm'>
               <MagicForm
                 values={values}
                 handleChange={handleChange}
@@ -48,7 +48,7 @@ export default function Magic() {
             </Container>
           </Grid>
           <Grid item xs={6}>
-            <Container maxWidth="xs">
+            <Container maxWidth='xs'>
               <MagicCard
                 values={values}
                 handleChange={handleChange}
@@ -61,7 +61,7 @@ export default function Magic() {
       ) : (
         <>
           <Grid item xs={12} sx={{ my: 5 }}>
-            <Container maxWidth="xs">
+            <Container maxWidth='xs'>
               <MagicForm
                 values={values}
                 handleChange={handleChange}

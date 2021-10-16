@@ -21,45 +21,44 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
   const { data: subtypes } = useSWR('/api/subtypes');
   const { data: supertypes } = useSWR('/api/supertypes');
   return (
-    <Box component="form" noValidate autoComplete="off">
+    <Box component='form' noValidate autoComplete='off'>
       <FormControl fullWidth sx={{ mb: 2 }}>
-        <InputLabel id="select-label">Card Color</InputLabel>
+        <InputLabel id='select-label'>Card Color</InputLabel>
         <Select
-          size="small"
-          labelId="select-label"
-          id="select"
-          name="color"
-          label="Card Color"
+          size='small'
+          labelId='select-label'
+          id='select'
+          name='color'
+          label='Card Color'
           value={values.color}
           onChange={handleChange}
         >
-          <MenuItem value="grey">Colorless</MenuItem>
-          <MenuItem value="white">White</MenuItem>
-          <MenuItem value="blue">Blue</MenuItem>
-          <MenuItem value="green">Green</MenuItem>
-          <MenuItem value="red">Red</MenuItem>
-          <MenuItem value="black">Black</MenuItem>
+          <MenuItem value='grey'>Colorless</MenuItem>
+          <MenuItem value='white'>White</MenuItem>
+          <MenuItem value='blue'>Blue</MenuItem>
+          <MenuItem value='green'>Green</MenuItem>
+          <MenuItem value='red'>Red</MenuItem>
+          <MenuItem value='black'>Black</MenuItem>
         </Select>
       </FormControl>
       <TextField
-        size="small"
-        id="name"
-        name="name"
-        label="Name"
+        size='small'
+        id='name'
+        name='name'
+        label='Name'
         fullWidth
         value={values.name}
         onChange={handleChange}
       />
 
-      <Stack spacing={1} direction="row" sx={{ my: 2 }}>
+      <Stack spacing={1} direction='row' sx={{ my: 2 }}>
         <TextField
           fullWidth
-          min="0"
-          size="small"
-          id="red"
-          label="Red"
-          name="red"
-          type="number"
+          size='small'
+          id='red'
+          label='Red'
+          name='r'
+          type='number'
           inputProps={{
             inputMode: 'numeric',
             pattern: '[0-9]*',
@@ -68,21 +67,21 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           }}
           InputProps={{
             startAdornment: (
-              <InputAdornment position="start">
-                <FireIcon fontSize="small" />
+              <InputAdornment position='start'>
+                <FireIcon fontSize='small' />
               </InputAdornment>
             ),
           }}
-          value={mana.red}
+          value={mana.r}
           onChange={handleMana}
         />
         <TextField
           fullWidth
-          size="small"
-          id="blue"
-          name="blue"
-          label="Blue"
-          type="number"
+          size='small'
+          id='blue'
+          name='u'
+          label='Blue'
+          type='number'
           inputProps={{
             inputMode: 'numeric',
             pattern: '[0-9]*',
@@ -91,21 +90,21 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           }}
           InputProps={{
             startAdornment: (
-              <InputAdornment position="start">
-                <WaterIcon fontSize="small" />
+              <InputAdornment position='start'>
+                <WaterIcon fontSize='small' />
               </InputAdornment>
             ),
           }}
-          value={mana.blue}
+          value={mana.u}
           onChange={handleMana}
         />
         <TextField
           fullWidth
-          size="small"
-          id="green"
-          name="green"
-          label="Green"
-          type="number"
+          size='small'
+          id='green'
+          name='g'
+          label='Green'
+          type='number'
           inputProps={{
             inputMode: 'numeric',
             pattern: '[0-9]*',
@@ -114,23 +113,23 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           }}
           InputProps={{
             startAdornment: (
-              <InputAdornment position="start">
-                <TreeIcon fontSize="small" />
+              <InputAdornment position='start'>
+                <TreeIcon fontSize='small' />
               </InputAdornment>
             ),
           }}
-          value={mana.green}
+          value={mana.g}
           onChange={handleMana}
         />
       </Stack>
-      <Stack spacing={1} direction="row" sx={{ my: 2 }}>
+      <Stack spacing={1} direction='row' sx={{ my: 2 }}>
         <TextField
           fullWidth
-          size="small"
-          id="black"
-          name="black"
-          label="Black"
-          type="number"
+          size='small'
+          id='black'
+          name='b'
+          label='Black'
+          type='number'
           inputProps={{
             inputMode: 'numeric',
             pattern: '[0-9]*',
@@ -139,21 +138,21 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           }}
           InputProps={{
             startAdornment: (
-              <InputAdornment position="start">
-                <SkullIcon fontSize="small" />
+              <InputAdornment position='start'>
+                <SkullIcon fontSize='small' />
               </InputAdornment>
             ),
           }}
-          value={mana.black}
+          value={mana.b}
           onChange={handleMana}
         />
         <TextField
           fullWidth
-          size="small"
-          id="white"
-          name="white"
-          label="White"
-          type="number"
+          size='small'
+          id='white'
+          name='w'
+          label='White'
+          type='number'
           inputProps={{
             inputMode: 'numeric',
             pattern: '[0-9]*',
@@ -162,21 +161,21 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           }}
           InputProps={{
             startAdornment: (
-              <InputAdornment position="start">
-                <SunIcon fontSize="small" />
+              <InputAdornment position='start'>
+                <SunIcon fontSize='small' />
               </InputAdornment>
             ),
           }}
-          value={mana.white}
+          value={mana.w}
           onChange={handleMana}
         />
         <TextField
           fullWidth
-          size="small"
-          id="colorless"
-          name="colorless"
-          label="Colorless"
-          type="number"
+          size='small'
+          id='colorless'
+          name='c'
+          label='Colorless'
+          type='number'
           inputProps={{
             inputMode: 'numeric',
             pattern: '[0-9]*',
@@ -185,37 +184,36 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           }}
           InputProps={{
             startAdornment: (
-              <InputAdornment position="start">
-                <Typography variant="h5">&#9826;</Typography>
+              <InputAdornment position='start'>
+                <Typography variant='h5'>&#9826;</Typography>
               </InputAdornment>
             ),
           }}
-          value={mana.colorless}
+          value={mana.c}
           onChange={handleMana}
         />
       </Stack>
 
       <TextField
-        size="small"
-        id="image"
-        name="image"
-        label="Artwork"
+        size='small'
+        id='image'
+        name='image'
+        label='Artwork'
         fullWidth
         value={values.image}
         onChange={handleChange}
       />
 
-      <Divider sx={{ my: 2 }} />
-      <Stack spacing={2} direction="row" sx={{ my: 2 }}>
+      <Stack spacing={2} direction='row' sx={{ my: 2 }}>
         <Autocomplete
           autoSelect
           fullWidth
           freeSolo
-          size="small"
-          id="supertype"
+          size='small'
+          id='supertype'
           options={supertypes}
           renderInput={(params) => (
-            <TextField {...params} label="Supertype" name="supertype" />
+            <TextField {...params} label='Supertype' name='supertype' />
           )}
           value={values.supertype}
           onChange={handleChange}
@@ -224,11 +222,11 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           fullWidth
           autoSelect
           freeSolo
-          size="small"
-          id="type"
+          size='small'
+          id='type'
           options={types}
           renderInput={(params) => (
-            <TextField {...params} label="Type" name="type" />
+            <TextField {...params} label='Type' name='type' />
           )}
           value={values.type}
           onChange={handleChange}
@@ -237,11 +235,11 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           fullWidth
           autoSelect
           freeSolo
-          size="small"
-          id="subtype"
+          size='small'
+          id='subtype'
           options={subtypes}
           renderInput={(params) => (
-            <TextField {...params} label="Subtype" name="subtype" />
+            <TextField {...params} label='Subtype' name='subtype' />
           )}
           value={values.subtype}
           onChange={handleChange}
@@ -249,38 +247,37 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
       </Stack>
 
       <FormControl fullWidth sx={{ mb: 2 }}>
-        <InputLabel id="select-label">Rarity</InputLabel>
+        <InputLabel id='select-label'>Rarity</InputLabel>
         <Select
-          size="small"
-          labelId="select-label"
-          id="select"
-          name="rarity"
-          label="Rarity"
+          size='small'
+          labelId='select-label'
+          id='select'
+          name='rarity'
+          label='Rarity'
           value={values.rarity}
           onChange={handleChange}
         >
-          <MenuItem value="common">Common</MenuItem>
-          <MenuItem value="uncommon">Uncommon</MenuItem>
-          <MenuItem value="rare">Rare</MenuItem>
+          <MenuItem value='common'>Common</MenuItem>
+          <MenuItem value='uncommon'>Uncommon</MenuItem>
+          <MenuItem value='rare'>Rare</MenuItem>
         </Select>
       </FormControl>
 
-      <Divider sx={{ mb: 2 }} />
       <Stack spacing={2}>
         <TextField
-          size="small"
-          id="rules"
-          name="rules"
-          label="Rules"
+          size='small'
+          id='rules'
+          name='rules'
+          label='Rules'
           value={values.rules}
           onChange={handleChange}
           multiline
         />
         <TextField
-          size="small"
-          id="flavor-text"
-          name="flavor"
-          label="Flavor Text"
+          size='small'
+          id='flavor-text'
+          name='flavor'
+          label='Flavor Text'
           value={values.flavor}
           onChange={handleChange}
           multiline
@@ -295,35 +292,47 @@ const MagicForm = ({ values, handleChange, mana, handleMana }) => {
           onChange={handleChange}
         /> */}
       </Stack>
-      <Divider sx={{ my: 2 }} />
-      <Stack spacing={1} direction="row" sx={{ my: 2 }}>
+
+      <Stack spacing={1} direction='row' sx={{ my: 2 }}>
         <TextField
-          size="small"
-          id="power"
-          label="Power"
-          name="power"
-          type="number"
-          inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+          fullWidth
+          size='small'
+          id='power'
+          label='Power'
+          name='power'
+          type='number'
+          inputProps={{
+            inputMode: 'numeric',
+            pattern: '[0-9]*',
+            min: 0,
+            max: 10,
+          }}
           value={values.power}
           onChange={handleChange}
         />
         <TextField
-          size="small"
-          id="toughness"
-          name="toughness"
-          label="Toughness"
-          type="number"
-          inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+          fullWidth
+          size='small'
+          id='toughness'
+          name='toughness'
+          label='Toughness'
+          type='number'
+          inputProps={{
+            inputMode: 'numeric',
+            pattern: '[0-9]*',
+            min: 0,
+            max: 10,
+          }}
           value={values.toughness}
           onChange={handleChange}
         />
       </Stack>
       <TextField
         fullWidth
-        size="small"
-        id="artist"
-        name="artist"
-        label="Artist"
+        size='small'
+        id='artist'
+        name='artist'
+        label='Artist'
         value={values.artist}
         onChange={handleChange}
       />
