@@ -1,8 +1,5 @@
-# MUI + MTG
+# MTG
 
-A magic card generator using Next.js and MUI.
+A Magic The Gathering (MTG) card generator using Next.js and Mantine.
 
-References:
-
-- <https://docs.magicthegathering.io/>
-- <https://github.com/philhawksworth/virtual-lolly>
+https://www.mtgcardmaker.com

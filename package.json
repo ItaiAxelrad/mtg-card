@@ -1,32 +1,51 @@
 {
-  "name": "mui-mtg",
+  "name": "mtg",
   "version": "1.0.0",
-  "description": "A magic card generator",
+  "description": "A magic the gathering UI card generator",
   "main": "index.js",
   "private": true,
+  "author": "Itai Axelrad",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "typecheck": "tsc --noEmit",
+    "lint": "next lint",
+    "prettier": "prettier --write \"**/*.{ts,tsx}\"",
+    "update": "ncu -u && npm install && npm audit fix"
   },
   "dependencies": {
-    "@date-io/date-fns": "^2.11.0",
-    "@emotion/react": "^11.4.1",
-    "@emotion/server": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
-    "@mui/icons-material": "^5.0.3",
-    "@mui/material": "^5.0.0",
-    "next": "11.1.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "swr": "^1.0.1",
-    "vanilla-tilt": "^1.7.2"
+    "@mantine/charts": "^7.17.2",
+    "@mantine/core": "^7.17.2",
+    "@mantine/form": "^7.17.2",
+    "@mantine/hooks": "^7.17.2",
+    "@mantine/notifications": "^7.17.2",
+    "@mantine/spotlight": "^7.17.2",
+    "@tabler/icons-react": "^3.31.0",
+    "html2canvas": "^1.4.1",
+    "next": "^15.2.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-parallax-tilt": "^1.7.287"
   },
   "devDependencies": {
-    "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2"
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.23.0",
+    "eslint-config-next": "15.2.3",
+    "postcss": "^8.5.3",
+    "postcss-preset-mantine": "1.17.0",
+    "postcss-simple-vars": "^7.0.1",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
   },
-  "author": "Itai Axelrad",
-  "license": "ISC"
+  "browserslist": [
+    "last 3 and_chr versions",
+    "last 3 chrome versions",
+    "last 3 opera versions",
+    "last 3 ios_saf versions",
+    "last 3 safari versions"
+  ]
 }
